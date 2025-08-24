@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame Composite Generator</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖼️ Frame Composite Generator</h1>
+            <p>Upload a frame and product images to create beautiful composite images</p>
+        </header>
+
+        <div class="step-container">
+            <!-- Step 1: Frame Selection -->
+            <div class="step active" id="step1">
+                <h2>Step 1: Select Frame</h2>
+                <div class="frame-selection">
+                    <select id="frameSelect">
+                        <option value="">Choose frame option...</option>
+                        <option value="custom">Upload Custom Frame</option>
+                        <option value="r1" selected>Frame 1 (r1.png)</option>
+                        <option value="r2">Frame 2 (r2.png)</option>
+                    </select>
+                    
+                    <div id="customFrameUpload" class="upload-area" style="display: none;">
+                        <input type="file" id="frameInput" accept="image/*">
+                        <div class="drop-zone" id="frameDropZone">
+                            <p>📁 Drag & drop your frame image here or click to browse</p>
+                        </div>
+                    </div>
+                    
+                    <div id="framePreview" class="preview-container">
+                        <canvas id="frameCanvas" style="display: none;"></canvas>
+                        <p class="preview-text">Frame preview will appear here</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Product Images Upload -->
+            <div class="step" id="step2">
+                <h2>Step 2: Upload Product Images</h2>
+                <div class="product-upload">
+                    <input type="file" id="productInput" accept="image/*" multiple>
+                    <div class="drop-zone" id="productDropZone">
+                        <p>📦 Drag & drop multiple product images here or click to browse</p>
+                        <small>Supported formats: JPG, PNG, GIF</small>
+                    </div>
+                    
+                    <div id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p id="progressText">0 files uploaded</p>
+                    </div>
+                    
+                    <div id="productPreviews" class="thumbnails-grid"></div>
+                </div>
+            </div>
+
+            <!-- Step 3: Processing -->
+            <div class="step" id="step3">
+                <h2>Step 3: Generate Composite Images</h2>
+                <div class="processing-section">
+                    <button id="generateBtn" class="generate-btn" disabled>
+                        🎨 Generate Composite Images
+                    </button>
+                    
+                    <div id="processingProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="processingFill"></div>
+                        </div>
+                        <p id="processingText">Processing images...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Download -->
+            <div class="step" id="step4">
+                <h2>Step 4: Download Results</h2>
+                <div class="download-section">
+                    <div class="download-options">
+                        <button id="downloadZipBtn" class="download-btn" disabled>
+                            📦 Download All as ZIP
+                        </button>
+                        <button id="downloadAllBtn" class="download-btn" disabled>
+                            ⬇️ Download All Individually
+                        </button>
+                        <p>or download individual images below:</p>
+                    </div>
+                    
+                    <div id="resultPreviews" class="results-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
